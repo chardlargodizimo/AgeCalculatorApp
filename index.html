@@ -5,7 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Age Calculator</title>
-    <link rel="icon" href="./public/assets/images/favicon-32x32.png" type="image/x-icon">
+    <link rel="icon" href="/assets/images/favicon-32x32.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Poppins:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -17,40 +17,35 @@
         <form action="" class="age-calculator__input grid">
           <div class="age-calculator__item grid">
             <label class="uppercase letter-spacing-m fc-light fw-semibold" for="day-input">Day</label>
-            <input class="date-input | fs-500 fw-bold" type="number" placeholder="DD"  id="day-input">
+            <input class="date-input | fs-500 fw-bold" type="text" maxlength="2" placeholder="DD" id="day-input">
             <p id="day-error" class="error | fc-error italic"></p>
           </div>
-
           <div class="age-calculator__item grid">
             <label class="uppercase letter-spacing-m fc-light fw-semibold" for="month-input">Month</label>
-            <input class="date-input | fs-500 fw-bold" type="number"  placeholder="MM"  id="month-input">
+            <input class="date-input | fs-500 fw-bold fc-error-border" type="text" maxlength="2" placeholder="MM" id="month-input">
             <p id="month-error" class="error | fc-error italic"></p>
           </div>  
 
           <div class="age-calculator__item grid">
             <label class="uppercase letter-spacing-m fc-light fw-semibold" for="year-input">Year</label>
-            <input class="date-input | fs-500 fw-bold" type="number"   placeholder="YYYY" id="year-input">
+            <input class="date-input | fs-500 fw-bold" type="text" maxlength="4" placeholder="YYYY" id="year-input">
             <p id="year-error" class="error | fc-error italic"></p>
           </div>
           
           <button class="btn" type="submit">
-            <img class="arrow" src="./public/assets/images/icon-arrow.svg" alt="">
+            <img class="arrow" src="/assets/images/icon-arrow.svg" alt="">
           </button>
         </form>
 
-        
-
-       
-
         <div class="age-calculator__output grid">
           <strong class="date-result | fw-bold fs-600 italic">
-            <span id="year-output" class="date-output | fc-accent">--</span> years
+            <span id="year-output" class="date-output | fc-accent">--</span> <span id="year-output-label">years</span> 
           </strong>
           <strong class="date-result | fw-bold fs-600 italic">
-            <span id="month-output" class="date-output | fc-accent">--</span> months
+            <span id="month-output" class="date-output | fc-accent">--</span> <span id="month-output-label">months</span>
           </strong>
           <strong class="date-result | fw-bold fs-600 italic">
-            <span id="day-output" class="date-output | fc-accent">--</span> days
+            <span id="day-output" class="date-output | fc-accent">--</span> <span id="day-output-label">days</span>
           </strong>
         </div>
       </div>
