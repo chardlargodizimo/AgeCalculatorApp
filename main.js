@@ -92,18 +92,10 @@ const validateYearInput = () => {
     } else if (yearInput.value == now.getFullYear() && monthInput.value - 1 > now.getMonth()) {
         monthError.textContent = ERROR_MESSAGES.invalidMonth;        
         errorState(monthInput, monthInputLabel, "#ff5757");
-        // dayInput.style.borderColor = "#ff5757";
-        // dayInputLabel.style.color = "#ff5757";
-        // yearInput.style.borderColor = "#ff5757";
-        // yearInputLabel.style.color = "#ff5757";
         yearError.textContent = "";
     } else if (yearInput.value == now.getFullYear() && monthInput.value -1 == now.getMonth() && dayInput.value > now.getDate()) {
         dayError.textContent = ERROR_MESSAGES.invalidDay;
         errorState(dayInput, dayInputLabel, "#ff5757");
-        // monthInput.style.borderColor = "#ff5757";
-        // monthInputLabel.style.color = "#ff5757";
-        // yearInput.style.borderColor = "#ff5757";
-        // yearInputLabel.style.color = "#ff5757";
         yearError.textContent = "";
     } else {
         yearError.textContent = ""
