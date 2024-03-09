@@ -93,7 +93,7 @@ const validateYearInput = () => {
         monthError.textContent = ERROR_MESSAGES.invalidMonth;        
         errorState(monthInput, monthInputLabel, "#ff5757");
         yearError.textContent = "";
-    } else if (yearInput.value == now.getFullYear() && monthInput.value -1 == now.getMonth() && dayInput.value > now.getDate()) {
+    } else if (yearInput.value == now.getFullYear() && monthInput.value - 1 == now.getMonth() && dayInput.value > now.getDate()) {
         dayError.textContent = ERROR_MESSAGES.invalidDay;
         errorState(dayInput, dayInputLabel, "#ff5757");
         yearError.textContent = "";
