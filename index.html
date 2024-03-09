@@ -14,24 +14,24 @@
   <body class="bg-default">
     <div class="age-calculator | bg-calculator ff-default fs-400 fc-default">
       <div class="wrapper">
-        <form action="" class="age-calculator__input grid">
+        <form class="age-calculator__input grid">
           <div class="age-calculator__item grid">
-            <label class="uppercase letter-spacing-m fc-light fw-semibold" for="day-input">Day</label>
-            <input class="date-input | fs-500 fw-bold" type="text" maxlength="2" placeholder="DD" id="day-input">
+            <label for="day-input" class="uppercase letter-spacing-m fc-light fw-semibold">Day</label>
+            <input type="text" id="day-input" class="date-input | fs-500 fw-bold" maxlength="2" placeholder="DD">
             <p id="day-error" class="error | fc-error italic"></p>
           </div>
           <div class="age-calculator__item grid">
-            <label class="uppercase letter-spacing-m fc-light fw-semibold" for="month-input">Month</label>
-            <input class="date-input | fs-500 fw-bold fc-error-border" type="text" maxlength="2" placeholder="MM" id="month-input">
+            <label for="month-input" class="uppercase letter-spacing-m fc-light fw-semibold">Month</label>
+            <input type="text" id="month-input" class="date-input | fs-500 fw-bold fc-error-border" maxlength="2" placeholder="MM">
             <p id="month-error" class="error | fc-error italic"></p>
           </div>  
           <div class="age-calculator__item grid">
-            <label class="uppercase letter-spacing-m fc-light fw-semibold" for="year-input">Year</label>
-            <input class="date-input | fs-500 fw-bold" type="text" maxlength="4" placeholder="YYYY" id="year-input">
+            <label for="year-input" class="uppercase letter-spacing-m fc-light fw-semibold">Year</label>
+            <input type="text" id="year-input" class="date-input | fs-500 fw-bold" maxlength="4" placeholder="YYYY">
             <p id="year-error" class="error | fc-error italic"></p>
           </div>
-          <button class="btn" type="submit">
-            <img class="arrow" src="/assets/images/icon-arrow.svg" alt="">
+          <button class="btn" type="submit" aria-label="Calculate">
+            <img class="arrow" src="/assets/images/icon-arrow.svg" alt="Arrow icon">
           </button>
         </form>
         <div class="age-calculator__output grid">

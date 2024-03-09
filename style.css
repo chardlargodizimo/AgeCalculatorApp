@@ -7,7 +7,7 @@
   
     --fs-400: clamp(0.5rem, 3vw, 0.85rem);
     --fs-500: clamp(1rem, 5vw, 2rem);
-    --fs-600: clamp(3.5rem, 10vw, 6.5rem);
+    --fs-600: clamp(3.4rem, 10vw, 6.5rem);
   
     --clr-accent: hsl(259, 100%, 65%);
     --clr-error: hsl(0, 100%, 67%);
