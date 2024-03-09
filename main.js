@@ -34,7 +34,7 @@ const ERROR_MESSAGES = {
     requiredField: "This field is required",
     invalidDay: "Must be a valid day",
     invalidMonth: "Must be a valid month",
-    invalidYear: "Must be in the past",
+    invalidYear: "Must be a valid year",
     invalidDate: "Must be a valid date"
 }
 
@@ -61,24 +61,14 @@ const truncateInput = (input, maxLength) => {
     input.value = truncatedValue;
 };
 
-// event listener for month input to truncate to 2 digits
-monthInput.addEventListener('input', (e) => {
-    truncateInput(e.target, 2);
-});
-
-// event listener for day input to truncate to 2 digits
-dayInput.addEventListener('input', (e) => {
-    truncateInput(e.target, 2);
-});
-
-// event listener for year input to truncate to 4 digits
-yearInput.addEventListener('input', (e) => {
-    truncateInput(e.target, 4);
-});
-
+// function to trigger error styles
 const errorState = (input, label, color) => {
     input.style.borderColor = color;
     label.style.color = color;
+}
+
+const happyBirthday = () => {
+    
 }
 
 // function to validate year input
@@ -86,7 +76,7 @@ const validateYearInput = () => {
     if (yearInput.value === "") {
         yearError.textContent = ERROR_MESSAGES.requiredField;
         errorState(yearInput, yearInputLabel, "#ff5757");
-    } else if (yearInput.value > now.getFullYear()) {
+    } else if (yearInput.value > now.getFullYear() || yearInput.value < 1700) {
         yearError.textContent = ERROR_MESSAGES.invalidYear;
         errorState(yearInput, yearInputLabel, "#ff5757");
     } else if (yearInput.value == now.getFullYear() && monthInput.value - 1 > now.getMonth()) {
@@ -154,6 +144,7 @@ const calculateAndDisplayAge = () => {
     let newYear = now.getFullYear() - DOB.getFullYear();
     let newMonth = now.getMonth() - DOB.getMonth();
     let newDay = now.getDate() - DOB.getDate();
+    
 
     if (newMonth < 0 || (newMonth === 0 && newDay < 0)) {
     newYear--;
@@ -173,7 +164,30 @@ const calculateAndDisplayAge = () => {
     yearOutput.textContent = newYear;
     monthOutput.textContent = newMonth;
     dayOutput.textContent = newDay;
+   
+
+    if (DOB.getDate() == now.getDate() && DOB.getMonth() == now.getMonth()) {
+        monthOutput.textContent = "Happy";
+        monthOutputLabel.textContent = "";
+        dayOutput.textContent = "";
+        dayOutputLabel.textContent = "Birthday";
+    }
 }
+
+// event listener for month input to truncate to 2 digits
+monthInput.addEventListener('input', (e) => {
+    truncateInput(e.target, 2);
+});
+
+// event listener for day input to truncate to 2 digits
+dayInput.addEventListener('input', (e) => {
+    truncateInput(e.target, 2);
+});
+
+// event listener for year input to truncate to 4 digits
+yearInput.addEventListener('input', (e) => {
+    truncateInput(e.target, 4);
+});
 
 // event listener for form submission
 form.addEventListener("submit", (e) => {
