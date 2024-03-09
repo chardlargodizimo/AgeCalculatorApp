@@ -9,6 +9,11 @@ const dayInput = document.getElementById("day-input");
 const monthInput = document.getElementById("month-input");
 const yearInput = document.getElementById("year-input");
 
+// input labels
+const dayInputLabel = document.getElementsByTagName("label")[0];
+const monthInputLabel = document.getElementsByTagName("label")[1];
+const yearInputLabel = document.getElementsByTagName("label")[2];
+
 // output elements
 const dayOutput = document.getElementById("day-output");
 const monthOutput = document.getElementById("month-output");
@@ -75,48 +80,76 @@ yearInput.addEventListener('input', (e) => {
 const validateYearInput = () => {    
     if (yearInput.value === "") {
         yearError.textContent = ERROR_MESSAGES.requiredField;
+        yearInput.style.borderColor = "red";
+        yearInputLabel.style.color = "red";
         resetOutput();
         return false;
     } else if (yearInput.value > now.getFullYear()) {
         yearError.textContent = ERROR_MESSAGES.invalidYear;
+        yearInput.style.borderColor = "red";
+        yearInputLabel.style.color = "red";
         resetOutput();
         return false;
     } else if (yearInput.value == now.getFullYear() && monthInput.value - 1 > now.getMonth()) {
         dayError.textContent = ERROR_MESSAGES.invalidDate;
+        dayInput.style.borderColor = "red";
+        dayInputLabel.style.color = "red";
+        monthInput.style.borderColor = "red";
+        monthInputLabel.style.color = "red";
+        yearInput.style.borderColor = "red";
+        yearInputLabel.style.color = "red";
         resetOutput();
         yearError.textContent = "";
         return false;
     } else if (yearInput.value == now.getFullYear() && monthInput.value -1 == now.getMonth() && dayInput.value > now.getDate()) {
         dayError.textContent = ERROR_MESSAGES.invalidDate;
+        dayInput.style.borderColor = "red";
+        dayInputLabel.style.color = "red";
+        monthInput.style.borderColor = "red";
+        monthInputLabel.style.color = "red";
+        yearInput.style.borderColor = "red";
+        yearInputLabel.style.color = "red";
         resetOutput();
         yearError.textContent = "";
         return false;
     } else {
         yearError.textContent = ""
+        dayInput.style.borderColor = "";
+        dayInputLabel.style.color = "";
+        monthInput.style.borderColor = "";
+        monthInputLabel.style.color = "";
+        yearInput.style.borderColor = "";
+        yearInputLabel.style.color = "";
         return true;
     }
 }
 
 // function to validate day and month input
-const validateDayAndMonthInput =  (input, error, minValue, maxValue, errorMessageKey) => {
+const validateDayAndMonthInput =  (input, label, error, minValue, maxValue, errorMessageKey) => {
     if (input.value === "") {
         error.textContent = ERROR_MESSAGES.requiredField;
+        input.style.borderColor = "red";
+        label.style.color = "red";
         resetOutput();
         return false;
     } else if (input.value <= minValue || input.value > maxValue) {
         error.textContent = ERROR_MESSAGES[errorMessageKey];
+        input.style.borderColor = "red";
+        label.style.color = "red";
         resetOutput();
         return false;
     } else {
         error.textContent = "";
+        input.style.borderColor = "";
+        label.style.color = "";
         return true;
     }
 }
 
 // function to validate all inputs
 const validateInputs = () => {
-    const isDayValid = validateDayAndMonthInput(dayInput, dayError, 0, 31, "invalidDay");
-    const isMonthValid = validateDayAndMonthInput(monthInput, monthError, 0, 12, "invalidMonth");
+    const isDayValid = validateDayAndMonthInput(dayInput, dayInputLabel, dayError, 0, 31, "invalidDay");
+    const isMonthValid = validateDayAndMonthInput(monthInput, monthInputLabel, monthError, 0, 12, "invalidMonth");
     const isYearValid = validateYearInput();
 
     return isDayValid && isMonthValid && isYearValid;
@@ -130,6 +163,12 @@ const isValidDate = (day, month, year) => {
         return true;
     } else {
         dayError.textContent = ERROR_MESSAGES.invalidDate;
+        dayInput.style.borderColor = "red";
+        dayInputLabel.style.color = "red";
+        monthInput.style.borderColor = "red";
+        monthInputLabel.style.color = "red";
+        yearInput.style.borderColor = "red";
+        yearInputLabel.style.color = "red";
         resetOutput();
         return false;
     }
@@ -169,6 +208,4 @@ form.addEventListener("submit", (e) => {
     if (validateInputs() && isValidDate(dayInput.value, monthInput.value, yearInput.value)) {
         calculateAndDisplayAge();
     }
-
-    console.log(monthInput.value.toString().length > 3);
 })
